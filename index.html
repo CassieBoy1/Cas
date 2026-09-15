@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEON // RANDOM</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{min-height:100vh;background:#020604;color:#d9ffe8;font-family:Arial,Helvetica,sans-serif;display:grid;place-items:center;overflow:hidden}
+    body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% 45%,rgba(0,255,100,.16),transparent 35%),linear-gradient(rgba(0,255,100,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,100,.035) 1px,transparent 1px);background-size:auto,40px 40px;pointer-events:none}
+    .card{position:relative;width:min(900px,90vw);padding:70px 50px;text-align:center;border:1px solid #18ff75;border-radius:28px;background:rgba(2,12,7,.78);box-shadow:0 0 25px rgba(0,255,100,.35),inset 0 0 45px rgba(0,255,100,.06);backdrop-filter:blur(8px)}
+    .tag{font-size:12px;letter-spacing:7px;color:#39ff88;text-shadow:0 0 12px #00ff66;margin-bottom:20px}
+    h1{font-size:clamp(52px,10vw,110px);line-height:.9;letter-spacing:-5px;color:#eafff1;text-shadow:0 0 8px #fff,0 0 25px #00ff66,0 0 55px #00ff66;margin-bottom:25px}
+    p{max-width:600px;margin:0 auto 35px;color:#9bd9b3;font-size:18px;line-height:1.6}
+    button{cursor:pointer;border:1px solid #20ff78;background:#071b0e;color:#baffd1;border-radius:999px;padding:15px 30px;font-size:16px;font-weight:bold;letter-spacing:2px;box-shadow:0 0 15px rgba(0,255,100,.3);transition:.2s}
+    button:hover{transform:translateY(-3px) scale(1.03);background:#0b2d17;box-shadow:0 0 30px rgba(0,255,100,.7)}
+    #word{color:#39ff88;text-shadow:0 0 15px #00ff66}
+    .scan{position:absolute;left:8%;right:8%;height:1px;background:#39ff88;box-shadow:0 0 10px #00ff66;animation:scan 4s linear infinite;opacity:.45}
+    @keyframes scan{0%{top:10%}50%{top:90%}100%{top:10%}}
+    @media(max-width:600px){.card{padding:55px 25px}p{font-size:16px}h1{letter-spacing:-3px}}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="scan"></div>
+    <div class="tag">SYSTEM ONLINE // 2026</div>
+    <h1>NEON<br><span id="word">GREEN</span></h1>
+    <p>Een random neon-projectje. Klik op de knop en laat het scherm een nieuwe vibe kiezen.</p>
+    <button onclick="changeVibe()">⚡ CHANGE VIBE</button>
+  </main>
+  <script>
+    const vibes=['GREEN','MATRIX','CYBER','NIGHT','GLOW','FUTURE'];
+    function changeVibe(){
+      const word=document.getElementById('word');
+      word.textContent=vibes[Math.floor(Math.random()*vibes.length)];
+      document.body.style.background=`hsl(${100+Math.random()*40}, 45%, 2%)`;
+    }
+  </script>
+</body>
+</html>
